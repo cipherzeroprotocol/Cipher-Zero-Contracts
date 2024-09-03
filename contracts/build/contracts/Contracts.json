@@ -1,0 +1,72 @@
+{
+    "contracts": {
+      "Contract.sol": {
+        "MyToken": {
+          "abi": [
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "initialSupply",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "nonpayable",
+              "type": "constructor"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "to",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "amount",
+                  "type": "uint256"
+                }
+              ],
+              "name": "mint",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "from",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "amount",
+                  "type": "uint256"
+                }
+              ],
+              "name": "burn",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            }
+          ],
+          "evm": {
+            "bytecode": {
+              "object": "0x60606040523415600e57600080fd5b60c5600d6000396000f3fe...",
+              "opcodes": "PUSH1 0x60 PUSH1 0x00 PUSH1 0x00 MSTORE PUSH1 0x00...",
+              "sourceMap": "20:165:0:-:0;;;;;"
+            },
+            "deployedBytecode": {
+              "object": "0x60606040523415600e57600080fd5b60c5600d6000396000f3fe...",
+              "opcodes": "PUSH1 0x60 PUSH1 0x00 PUSH1 0x00 MSTORE PUSH1 0x00...",
+              "sourceMap": "20:165:0:-:0;;;;;"
+            }
+          },
+          "metadata": "{\"compiler\":{\"version\":\"0.8.0\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"initialSupply\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},...]}"
+        }
+      }
+    },
+    "version": "0.8.0"
+  }
+  

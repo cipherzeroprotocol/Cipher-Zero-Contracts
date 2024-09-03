@@ -1,0 +1,562 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"cancel(bytes32)": "c4d252f5",
+			"execute(((address,uint256,bytes)[],bytes32,bytes32))": "74da756b",
+			"executeInstant(((address,uint256,bytes)[],bytes32,bytes32))": "95218ecd",
+			"getOperationState(bytes32)": "7958004c",
+			"hashOperation(((address,uint256,bytes)[],bytes32,bytes32))": "c126e860",
+			"isOperation(bytes32)": "31d50750",
+			"isOperationDone(bytes32)": "2ab0f529",
+			"isOperationPending(bytes32)": "584b153e",
+			"isOperationReady(bytes32)": "13bc9f20",
+			"scheduleShadow(bytes32,uint256)": "6d1d8363",
+			"scheduleTransparent(((address,uint256,bytes)[],bytes32,bytes32),uint256)": "2c431917",
+			"updateDelay(uint256)": "64d62353",
+			"updateSecurityCouncil(address)": "dbfe3e96"
+		}
+	},
+	"abi": [
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "_delayBefore",
+					"type": "uint256"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "_delayAfter",
+					"type": "uint256"
+				}
+			],
+			"name": "ChangeMinDelay",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "_securityCouncilBefore",
+					"type": "address"
+				},
+				{
+					"indexed": false,
+					"internalType": "address",
+					"name": "_securityCouncilAfter",
+					"type": "address"
+				}
+			],
+			"name": "ChangeSecurityCouncil",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "bytes32",
+					"name": "_id",
+					"type": "bytes32"
+				}
+			],
+			"name": "OperationCancelled",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "bytes32",
+					"name": "_id",
+					"type": "bytes32"
+				}
+			],
+			"name": "OperationExecuted",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "bytes32",
+					"name": "_id",
+					"type": "bytes32"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "delay",
+					"type": "uint256"
+				}
+			],
+			"name": "ShadowOperationScheduled",
+			"type": "event"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "bytes32",
+					"name": "_id",
+					"type": "bytes32"
+				},
+				{
+					"indexed": false,
+					"internalType": "uint256",
+					"name": "delay",
+					"type": "uint256"
+				},
+				{
+					"components": [
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "target",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "bytes",
+									"name": "data",
+									"type": "bytes"
+								}
+							],
+							"internalType": "struct IGovernance.Call[]",
+							"name": "calls",
+							"type": "tuple[]"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "predecessor",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "salt",
+							"type": "bytes32"
+						}
+					],
+					"indexed": false,
+					"internalType": "struct IGovernance.Operation",
+					"name": "_operation",
+					"type": "tuple"
+				}
+			],
+			"name": "TransparentOperationScheduled",
+			"type": "event"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "_id",
+					"type": "bytes32"
+				}
+			],
+			"name": "cancel",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "target",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "bytes",
+									"name": "data",
+									"type": "bytes"
+								}
+							],
+							"internalType": "struct IGovernance.Call[]",
+							"name": "calls",
+							"type": "tuple[]"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "predecessor",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "salt",
+							"type": "bytes32"
+						}
+					],
+					"internalType": "struct IGovernance.Operation",
+					"name": "_operation",
+					"type": "tuple"
+				}
+			],
+			"name": "execute",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "target",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "bytes",
+									"name": "data",
+									"type": "bytes"
+								}
+							],
+							"internalType": "struct IGovernance.Call[]",
+							"name": "calls",
+							"type": "tuple[]"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "predecessor",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "salt",
+							"type": "bytes32"
+						}
+					],
+					"internalType": "struct IGovernance.Operation",
+					"name": "_operation",
+					"type": "tuple"
+				}
+			],
+			"name": "executeInstant",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "_id",
+					"type": "bytes32"
+				}
+			],
+			"name": "getOperationState",
+			"outputs": [
+				{
+					"internalType": "enum IGovernance.OperationState",
+					"name": "",
+					"type": "uint8"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "target",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "bytes",
+									"name": "data",
+									"type": "bytes"
+								}
+							],
+							"internalType": "struct IGovernance.Call[]",
+							"name": "calls",
+							"type": "tuple[]"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "predecessor",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "salt",
+							"type": "bytes32"
+						}
+					],
+					"internalType": "struct IGovernance.Operation",
+					"name": "_operation",
+					"type": "tuple"
+				}
+			],
+			"name": "hashOperation",
+			"outputs": [
+				{
+					"internalType": "bytes32",
+					"name": "",
+					"type": "bytes32"
+				}
+			],
+			"stateMutability": "pure",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "_id",
+					"type": "bytes32"
+				}
+			],
+			"name": "isOperation",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "_id",
+					"type": "bytes32"
+				}
+			],
+			"name": "isOperationDone",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "_id",
+					"type": "bytes32"
+				}
+			],
+			"name": "isOperationPending",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "_id",
+					"type": "bytes32"
+				}
+			],
+			"name": "isOperationReady",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes32",
+					"name": "_id",
+					"type": "bytes32"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_delay",
+					"type": "uint256"
+				}
+			],
+			"name": "scheduleShadow",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"components": [
+								{
+									"internalType": "address",
+									"name": "target",
+									"type": "address"
+								},
+								{
+									"internalType": "uint256",
+									"name": "value",
+									"type": "uint256"
+								},
+								{
+									"internalType": "bytes",
+									"name": "data",
+									"type": "bytes"
+								}
+							],
+							"internalType": "struct IGovernance.Call[]",
+							"name": "calls",
+							"type": "tuple[]"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "predecessor",
+							"type": "bytes32"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "salt",
+							"type": "bytes32"
+						}
+					],
+					"internalType": "struct IGovernance.Operation",
+					"name": "_operation",
+					"type": "tuple"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_delay",
+					"type": "uint256"
+				}
+			],
+			"name": "scheduleTransparent",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "_newDelay",
+					"type": "uint256"
+				}
+			],
+			"name": "updateDelay",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_newSecurityCouncil",
+					"type": "address"
+				}
+			],
+			"name": "updateSecurityCouncil",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		}
+	]
+}

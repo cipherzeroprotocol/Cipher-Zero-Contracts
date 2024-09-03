@@ -1,0 +1,134 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "getCurrentMsg",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "encodedMsg",
+						"type": "bytes"
+					}
+				],
+				"name": "receiveEncodedMsg",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint16",
+						"name": "chainId",
+						"type": "uint16"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "applicationAddr",
+						"type": "bytes32"
+					}
+				],
+				"name": "registerApplicationContracts",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "str",
+						"type": "bytes"
+					}
+				],
+				"name": "sendMsg",
+				"outputs": [
+					{
+						"internalType": "uint64",
+						"name": "sequence",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"registerApplicationContracts(uint16,bytes32)": {
+					"notice": "Registers it's sibling applications on other chains as the only ones that can send this instance messages"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/messaging/Messenger.sol": "Messenger"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/messaging/IWormhole.sol": {
+			"keccak256": "0x2966ae79be50ad14ee34f2ef750e8820f5933a5121deb03b851c94c4d6f274d3",
+			"license": "Apache 2",
+			"urls": [
+				"bzz-raw://e38f0fda64a83949f03b3997a28525e2dd097a4d08a127a9f30e01180c254f0e",
+				"dweb:/ipfs/QmXaHKBy9oAMdyzd3zAMApYumMBwkeRZhWFrytPEN6ia2n"
+			]
+		},
+		"contracts/messaging/Messenger.sol": {
+			"keccak256": "0x555da2144a75293661ee3f473932f991905cda9dc6ccddb996d1f1830e03f710",
+			"license": "Unlicense",
+			"urls": [
+				"bzz-raw://2e78f1b07c036c4a5495de9d288e65ffd43e7228700c386d029405c11ab3a18c",
+				"dweb:/ipfs/QmQpfUUNbcAFHVbhyzivTNdyQ1NGQk55DPeo87gHZukBoW"
+			]
+		},
+		"contracts/messaging/Structs.sol": {
+			"keccak256": "0x5e75a087f74d8de0ca18e8e5ab2cff988d4e20bb643a51e08e2a70540334a53a",
+			"license": "Apache 2",
+			"urls": [
+				"bzz-raw://ef3509efdd2065f7c0a01e9463fb66ea5c021a01bad6e115f39ecfcb074ff1f3",
+				"dweb:/ipfs/QmdYAwANELc9D9ePCfpBwYE78nVdfMc2uM9CDSqMmsfVzM"
+			]
+		}
+	},
+	"version": 1
+}

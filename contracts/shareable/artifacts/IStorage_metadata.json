@@ -1,0 +1,83 @@
+{
+	"compiler": {
+		"version": "0.8.20+commit.a1b79de6"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "fileHash",
+						"type": "bytes32"
+					}
+				],
+				"name": "retrieveFile",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "fileUri",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "fileHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "string",
+						"name": "fileUri",
+						"type": "string"
+					}
+				],
+				"name": "storeFile",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/shareable/Storage.sol": "IStorage"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/shareable/Storage.sol": {
+			"keccak256": "0x82187a2c9acd3a25628c840ed78de7ec45092ef9f9ef076114fbbd22f66c83aa",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://330731ebcde699e926e864cbbab7b348c524f8d6596810f9e77fc19b10ed8ae2",
+				"dweb:/ipfs/QmW1ZhwAmBEp5NYLbE6WL8s1okJfMjH84q3apG5MkfXmHJ"
+			]
+		}
+	},
+	"version": 1
+}

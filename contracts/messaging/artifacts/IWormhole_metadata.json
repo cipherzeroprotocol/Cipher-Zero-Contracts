@@ -1,0 +1,644 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint64",
+						"name": "sequence",
+						"type": "uint64"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint32",
+						"name": "nonce",
+						"type": "uint32"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes",
+						"name": "payload",
+						"type": "bytes"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint8",
+						"name": "consistencyLevel",
+						"type": "uint8"
+					}
+				],
+				"name": "LogMessagePublished",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "chainId",
+				"outputs": [
+					{
+						"internalType": "uint16",
+						"name": "",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getCurrentGuardianSetIndex",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "",
+						"type": "uint32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "index",
+						"type": "uint32"
+					}
+				],
+				"name": "getGuardianSet",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address[]",
+								"name": "keys",
+								"type": "address[]"
+							},
+							{
+								"internalType": "uint32",
+								"name": "expirationTime",
+								"type": "uint32"
+							}
+						],
+						"internalType": "struct Structs.GuardianSet",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getGuardianSetExpiry",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "",
+						"type": "uint32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "hash",
+						"type": "bytes32"
+					}
+				],
+				"name": "governanceActionIsConsumed",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "governanceChainId",
+				"outputs": [
+					{
+						"internalType": "uint16",
+						"name": "",
+						"type": "uint16"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "governanceContract",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "impl",
+						"type": "address"
+					}
+				],
+				"name": "isInitialized",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "messageFee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "encodedVM",
+						"type": "bytes"
+					}
+				],
+				"name": "parseAndVerifyVM",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint8",
+								"name": "version",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint32",
+								"name": "timestamp",
+								"type": "uint32"
+							},
+							{
+								"internalType": "uint32",
+								"name": "nonce",
+								"type": "uint32"
+							},
+							{
+								"internalType": "uint16",
+								"name": "emitterChainId",
+								"type": "uint16"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "emitterAddress",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "uint64",
+								"name": "sequence",
+								"type": "uint64"
+							},
+							{
+								"internalType": "uint8",
+								"name": "consistencyLevel",
+								"type": "uint8"
+							},
+							{
+								"internalType": "bytes",
+								"name": "payload",
+								"type": "bytes"
+							},
+							{
+								"internalType": "uint32",
+								"name": "guardianSetIndex",
+								"type": "uint32"
+							},
+							{
+								"components": [
+									{
+										"internalType": "bytes32",
+										"name": "r",
+										"type": "bytes32"
+									},
+									{
+										"internalType": "bytes32",
+										"name": "s",
+										"type": "bytes32"
+									},
+									{
+										"internalType": "uint8",
+										"name": "v",
+										"type": "uint8"
+									},
+									{
+										"internalType": "uint8",
+										"name": "guardianIndex",
+										"type": "uint8"
+									}
+								],
+								"internalType": "struct Structs.Signature[]",
+								"name": "signatures",
+								"type": "tuple[]"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "hash",
+								"type": "bytes32"
+							}
+						],
+						"internalType": "struct Structs.VM",
+						"name": "vm",
+						"type": "tuple"
+					},
+					{
+						"internalType": "bool",
+						"name": "valid",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "reason",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "encodedVM",
+						"type": "bytes"
+					}
+				],
+				"name": "parseVM",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint8",
+								"name": "version",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint32",
+								"name": "timestamp",
+								"type": "uint32"
+							},
+							{
+								"internalType": "uint32",
+								"name": "nonce",
+								"type": "uint32"
+							},
+							{
+								"internalType": "uint16",
+								"name": "emitterChainId",
+								"type": "uint16"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "emitterAddress",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "uint64",
+								"name": "sequence",
+								"type": "uint64"
+							},
+							{
+								"internalType": "uint8",
+								"name": "consistencyLevel",
+								"type": "uint8"
+							},
+							{
+								"internalType": "bytes",
+								"name": "payload",
+								"type": "bytes"
+							},
+							{
+								"internalType": "uint32",
+								"name": "guardianSetIndex",
+								"type": "uint32"
+							},
+							{
+								"components": [
+									{
+										"internalType": "bytes32",
+										"name": "r",
+										"type": "bytes32"
+									},
+									{
+										"internalType": "bytes32",
+										"name": "s",
+										"type": "bytes32"
+									},
+									{
+										"internalType": "uint8",
+										"name": "v",
+										"type": "uint8"
+									},
+									{
+										"internalType": "uint8",
+										"name": "guardianIndex",
+										"type": "uint8"
+									}
+								],
+								"internalType": "struct Structs.Signature[]",
+								"name": "signatures",
+								"type": "tuple[]"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "hash",
+								"type": "bytes32"
+							}
+						],
+						"internalType": "struct Structs.VM",
+						"name": "vm",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "nonce",
+						"type": "uint32"
+					},
+					{
+						"internalType": "bytes",
+						"name": "payload",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint8",
+						"name": "consistencyLevel",
+						"type": "uint8"
+					}
+				],
+				"name": "publishMessage",
+				"outputs": [
+					{
+						"internalType": "uint64",
+						"name": "sequence",
+						"type": "uint64"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "hash",
+						"type": "bytes32"
+					},
+					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "r",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "s",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "uint8",
+								"name": "v",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "guardianIndex",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct Structs.Signature[]",
+						"name": "signatures",
+						"type": "tuple[]"
+					},
+					{
+						"components": [
+							{
+								"internalType": "address[]",
+								"name": "keys",
+								"type": "address[]"
+							},
+							{
+								"internalType": "uint32",
+								"name": "expirationTime",
+								"type": "uint32"
+							}
+						],
+						"internalType": "struct Structs.GuardianSet",
+						"name": "guardianSet",
+						"type": "tuple"
+					}
+				],
+				"name": "verifySignatures",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "valid",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "reason",
+						"type": "string"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint8",
+								"name": "version",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint32",
+								"name": "timestamp",
+								"type": "uint32"
+							},
+							{
+								"internalType": "uint32",
+								"name": "nonce",
+								"type": "uint32"
+							},
+							{
+								"internalType": "uint16",
+								"name": "emitterChainId",
+								"type": "uint16"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "emitterAddress",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "uint64",
+								"name": "sequence",
+								"type": "uint64"
+							},
+							{
+								"internalType": "uint8",
+								"name": "consistencyLevel",
+								"type": "uint8"
+							},
+							{
+								"internalType": "bytes",
+								"name": "payload",
+								"type": "bytes"
+							},
+							{
+								"internalType": "uint32",
+								"name": "guardianSetIndex",
+								"type": "uint32"
+							},
+							{
+								"components": [
+									{
+										"internalType": "bytes32",
+										"name": "r",
+										"type": "bytes32"
+									},
+									{
+										"internalType": "bytes32",
+										"name": "s",
+										"type": "bytes32"
+									},
+									{
+										"internalType": "uint8",
+										"name": "v",
+										"type": "uint8"
+									},
+									{
+										"internalType": "uint8",
+										"name": "guardianIndex",
+										"type": "uint8"
+									}
+								],
+								"internalType": "struct Structs.Signature[]",
+								"name": "signatures",
+								"type": "tuple[]"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "hash",
+								"type": "bytes32"
+							}
+						],
+						"internalType": "struct Structs.VM",
+						"name": "vm",
+						"type": "tuple"
+					}
+				],
+				"name": "verifyVM",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "valid",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "reason",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/messaging/IWormhole.sol": "IWormhole"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/messaging/IWormhole.sol": {
+			"keccak256": "0x2966ae79be50ad14ee34f2ef750e8820f5933a5121deb03b851c94c4d6f274d3",
+			"license": "Apache 2",
+			"urls": [
+				"bzz-raw://e38f0fda64a83949f03b3997a28525e2dd097a4d08a127a9f30e01180c254f0e",
+				"dweb:/ipfs/QmXaHKBy9oAMdyzd3zAMApYumMBwkeRZhWFrytPEN6ia2n"
+			]
+		},
+		"contracts/messaging/Structs.sol": {
+			"keccak256": "0x5e75a087f74d8de0ca18e8e5ab2cff988d4e20bb643a51e08e2a70540334a53a",
+			"license": "Apache 2",
+			"urls": [
+				"bzz-raw://ef3509efdd2065f7c0a01e9463fb66ea5c021a01bad6e115f39ecfcb074ff1f3",
+				"dweb:/ipfs/QmdYAwANELc9D9ePCfpBwYE78nVdfMc2uM9CDSqMmsfVzM"
+			]
+		}
+	},
+	"version": 1
+}
